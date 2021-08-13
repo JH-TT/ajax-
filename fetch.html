@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <article>
+
+    </article>
+    <!-- 누르면 css파일의 내용을 경고창으로 출력함. -->
+    <input type="button" value="fetch" onclick="
+        fetch('html').then(function(response){
+            response.text().then(function(text){
+                document.querySelector('article').innerHTML = text;
+            })
+        })
+        // then -> 응답을 기다리는 동안 미리 시켜놓음.
+
+        // Asynchronous -> 비동기 : 아래를 예로 들면, function이 실행되는 동안 다른코드들이 실행됨.(동시에 실행)
+        // Synchronous -> 동기 : 코드가 실행되는 동안 다른 코드가 실행이 안됨.
+
+        // function callbackme() {
+        //     console.log('response end');
+        // }
+        // 익명함수
+        // callbackme = function(){
+        //     console.log('response');
+        // }
+        // 위에 둘이 같은 코드
+        // fetch('html').then(callbackme);
+        // ↓ 익명함수 이용
+        // fetch('html').then(function(response){
+        //     if(response.status == '404'){ // 파일을 못찾으면 Not found경고창 출력
+        //         alert('404 Not found');
+        //     }
+        // }); // 함수가 호출될 떄 response객체 라고하는 어떤 것을 입력값으로 주면서 호출한다고 돼 있음. 그 값 안에 status라는 속성값이 200이면 성공했다는 것. 404는 실패. 그리고 가끔 304도 출력되는데 그건 Not Modified라고 응답이 수정되지 않았음을 알려주는것임.
+        // console.log(1);
+        // console.log(2);
+        //   1, 2를 실행하다가 웹 브라우저가 응답받는게 끝나면 그때 callbackme함수를 호출하게 됨. 그래서 1 2 response end 순으로 출력됨.
+    ">
+</body>
+</html>
